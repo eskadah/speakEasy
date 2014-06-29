@@ -1,0 +1,46 @@
+
+
+
+<div class = 'container' style = 'margin-top:50px'>
+  <div class = 'row'>
+    <div class='col-xs-3'>
+    </div>
+    <div class='col-xs-6'>
+
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= @event.title.capitalize%></h3>
+        </div>
+        <div class="panel-body">
+
+          <p>
+            <strong>Start:</strong>
+            <%= @event.start.to_s(:long) %>
+          </p>
+
+          <p>
+            <strong>End:</strong>
+            <%= @event.end.to_s(:long) %>
+          </p>
+
+
+          <p class = text-center>
+            <strong>Comment:</strong>
+          <p class = 'lead ' ><%= @event.comment %></p>
+          </p>
+
+        </div>
+
+        <div class = 'panel-footer'>
+          <%= link_to 'Edit', edit_event_path(@event),class:'btn btn-small btn-default' %> <%= link_to 'My Events',current_user, data:{no_turbolink:true},class:'btn btn-small btn-default'  %>
+        </div>
+
+      </div>
+
+
+
+    </div>
+    <div class='col-xs-3'></div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class = 'container'>
+  <div class = 'row'>
+    <div class='col-xs-3'>
+    </div>
+    <div class='col-xs-6'>
+      <h1 class = 'text-center'>New Event</h1>
+      <%= render 'form' %>
+
+      <div class = 'pull-right'>
+        <%= link_to 'Show', @event,class:'btn btn-small btn-default' %> <%= link_to 'Back', :back, data:{no_turbolink:true},class:'btn btn-small btn-default'  %>
+      </div>
+
+    </div>
+    <div class='col-xs-3'></div>
+  </div>
+</div>

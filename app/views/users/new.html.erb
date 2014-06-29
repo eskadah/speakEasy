@@ -1,0 +1,40 @@
+<div class='col-xs-6'>
+   <br>
+  <br>
+  <br>
+  <br>
+  <div class="panel panel-default">
+    <div class="panel-body">
+        <h1 class = 'lead text-center'>Speak Easy is the plaform for organizing and managing conference speaking engagements </h1>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <div class="panel-footer">&copy <%= Time.now.year %></div>
+  </div>
+
+</div>
+
+<div class='col-xs-6'>
+  <h1> New to Speak Easy? </h1>
+  <%= form_for @user do |f| %>
+      <% if @user.errors.any? %>
+          <div class='text-center form-group bg-danger'>
+            <ul class='list-unstyled'>
+              <% @user.errors.full_messages.each do |msg| %>
+                  <li class = text-danger><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+      <div class='form-group'> <%= f.text_field :name, :placeholder => "Name", class: 'form-control' %> </div>
+      <div class='form-group'> <%= f.text_field :email, :placeholder => "Email", class: 'form-control' %> </div>
+      <div class='form-group'><%= f.text_field :username, :placeholder => "Username", class: 'form-control' %>  </div>
+      <div class='form-group'><%= f.password_field :password, :placeholder => "Password", class: 'form-control' %> </div>
+      <div class='form-group'><%= f.password_field :password_confirmation, :placeholder => "Confirm Password", class: 'form-control' %>  </div>
+      <div class='form-group'><%= f.submit "Create Your Account", class: 'btn btn-primary' %> </div>
+  <% end %>
+</div>
+

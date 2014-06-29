@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SpeakingCalendar</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    'fullcalendar.css', media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag 'application', "data-turbolinks-track" => true %>
+  <%= javascript_include_tag 'moment.min.js', "data-turbolinks-track" => true %>
+  <%= javascript_include_tag 'jquery-ui.custom.min.js', "data-turbolinks-track" => true %>
+  <%= javascript_include_tag 'fullcalendar.min.js', "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= render('header') %>
+<div class = 'container'>
+  <% flash.each do |name,msg| %>
+      <div id ='alert'class = 'alert text-center alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>'>
+        <button type='button'class ='close' data-dismiss = 'alert'>&times;</button>
+        <%= msg %>
+      </div>
+  <% end %>
+</div>
+<div class = 'container'>
+  <%= yield %>
+</div>
+</body>
+
+</body>
+</html>
