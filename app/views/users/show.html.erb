@@ -15,7 +15,6 @@
 
 <div id = 'showcontainer' class = 'container'>
 <div  class = 'col-xs-6'>
-
   <div class="panel panel-default">
     <div class="panel-heading">
       <h5 class = 'panel-title'><%= current_user.name.titleize %>'s Upcoming Agenda</h5>
@@ -23,7 +22,6 @@
 
 
     </div>
-    <!--<div class="panel-body"><p>Here are your upcoming events: </p></div>-->
 
     <% if @events.count > 0 %>
       <table class = 'table table-striped table-hover'>
@@ -58,6 +56,7 @@
             </tr>
         <% end %>
         </tbody>
+
         </table>
       <% else %>
         <br>
@@ -66,9 +65,12 @@
     <br>
     <br>
     <br>
-
   </div>
-
+  <div>
+    <%= button_to events_path(format: :pdf), method: :get, class: 'btn btn-default btn-lg' do %>
+        <span class="glyphicon glyphicon-save"></span> Download Agenda 
+    <% end %>
+  </div>
 </div>
 <div  class = 'col-xs-6' id = 'daycalendar'></div>
 

@@ -8,7 +8,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html
       format.json {render json: @events.to_json(:methods => :url)}
-      format.pdf {render_pdf @events,current_user}
+      format.pdf  {render_pdf @events,current_user}
       end
   end
 
