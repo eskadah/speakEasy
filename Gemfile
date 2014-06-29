@@ -46,6 +46,8 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'debugger', group: [:development, :test]
 
 
+gem 'prawn'
+
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'whenever', :require => false

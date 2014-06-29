@@ -8,30 +8,19 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html
       format.json {render json: @events.to_json(:methods => :url)}
+      format.pdf do 
+        pdf = Prawn::Document.new
+        send_data pdf.render, filename: 'Agenda.pdf', type: 'application/pdf'
+      end
     end
   end
 
   def new
-    if params[:clicked_date]
-      @event = current_user.events.build(:start => params[:clicked_date],:end => params[:clicked_date])
-    else
-      @event = current_user.events.build(:start => Time.now)
-    end
-  end
-
-  def show
-   @event = Event.find(params[:id])
-  end
-
-
-  def edit
-
+    @event = Event.build_event_from_params(params)
   end
 
   def create
     @event = current_user.events.build(event_params)
-
-
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
@@ -43,7 +32,9 @@ class EventsController < ApplicationController
     end
   end
 
-
+  def show
+   @event = Event.find(params[:id])
+  end
 
   def update
     respond_to do |format|
@@ -55,6 +46,11 @@ class EventsController < ApplicationController
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+
+  def edit
+
   end
 
   def destroy
