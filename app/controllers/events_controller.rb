@@ -8,11 +8,8 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html
       format.json {render json: @events.to_json(:methods => :url)}
-      format.pdf do 
-        pdf = Prawn::Document.new
-        send_data pdf.render, filename: 'Agenda.pdf', type: 'application/pdf'
+      format.pdf {render_pdf @events,current_user}
       end
-    end
   end
 
   def new
@@ -69,6 +66,11 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
+  end
+
+  def render_pdf(events,user)
+    pdf = AgendaPDF.new(events,user)
+    send_data pdf.render, filename: 'Your Agenda.pdf', type: 'application/pdf'
   end
 
 end
