@@ -9,11 +9,11 @@ class EventsController < ApplicationController
       format.html
       format.json {render json: @events.to_json(:methods => :url)}
       format.pdf  {render_pdf @events,current_user}
-      end
+    end
   end
 
   def new
-    @event = Event.build_event_from_params(params)
+    @event = Event::AsClick.new(params)
   end
 
   def create

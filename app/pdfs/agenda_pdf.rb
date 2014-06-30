@@ -9,7 +9,7 @@ def initialize(events,user)
   @events = events
   @user = user
   header 
-  move_down 20
+  move_down(20)
   table_content
 end
 
