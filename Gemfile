@@ -47,6 +47,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 
 gem 'prawn'
+gem 'active_type'
 
 gem 'delayed_job_active_record'
 gem 'daemons'

@@ -14,10 +14,6 @@ class Event < ActiveRecord::Base
   scope :future_events, ->{ where('start >= ?',Date.today) }
   scope :upcoming_events, ->(speaker_id){ future_events.where(:user_id => speaker_id).order('start asc').limit(5)}
 
-  # def self.build_event_from_params(params)
-  #     clicked_time = params[:clicked_date] || Time.now
-  #     new(:start => clicked_time,:end => clicked_time)
-  # end
 
   def url
     event_path(self)

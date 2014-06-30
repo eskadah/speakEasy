@@ -1,5 +1,5 @@
 
-class Event::AsClick < Event
+class Event::AsClick < ActiveType::Record[Event]
 
   def initialize(params)
     clicked_time = params[:clicked_date] || Time.now
