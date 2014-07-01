@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.4'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', group: :development
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
@@ -51,5 +51,12 @@ gem 'active_type'
 
 gem 'delayed_job_active_record'
 gem 'daemons'
-gem 'whenever', :require => false
 
+group(:production) do
+  gem 'rails_12factor'
+  gem 'pg'
+end
+
+group(:development) do 
+  gem 'whenever', :require => false
+end
