@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  include Rails.application.routes.url_helpers
+  
 
   before_save :build_all_day_event
   after_save :send_reminder
@@ -14,10 +14,6 @@ class Event < ActiveRecord::Base
   scope :future_events, ->{ where('start >= ?',Date.today) }
   scope :upcoming_events, ->(speaker_id){ future_events.where(:user_id => speaker_id).order('start asc').limit(5)}
 
-
-  def url
-    event_path(self)
-  end
 
   protected
 

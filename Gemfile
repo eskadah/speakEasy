@@ -44,7 +44,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-gem 'active_model_serializers'
+gem 'active_model_serializers', '~> 0.8.1'
 
 gem 'prawn'
 gem 'active_type'
