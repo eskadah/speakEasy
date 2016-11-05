@@ -14,6 +14,11 @@ class Event < ActiveRecord::Base
   scope :future_events, ->{ where('start >= ?',Date.today) }
   scope :upcoming_events, ->(speaker_id){ future_events.where(:user_id => speaker_id).order('start asc').limit(5)}
 
+  class << self
+    def one_day_before_event(instance)
+      instance.start.at_beginning_of_day - 1.day
+    end
+  end
 
   protected
 
@@ -30,17 +35,11 @@ class Event < ActiveRecord::Base
     end
   end
 
-
-  def one_day_before_event
-    self.start.at_beginning_of_day - 1.day
-  end
-
-
   def send_reminder
       Notification.send_reminder(speaker.email,title,start,self.end).deliver
   end
 
-  handle_asynchronously :send_reminder, :run_at => Proc.new{|instance| instance.one_day_before_event}
+  handle_asynchronously :send_reminder, :run_at => Proc.new{ |instance| one_day_before_event(instance) }
 
 end
 
