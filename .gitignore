@@ -16,5 +16,10 @@
 /tmp
 .DS_Store
 .env
+.idea/*
+/.idea
+.idea
 
 /.DS_Store
+
+.idea
