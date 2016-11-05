@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  around_filter :user_time_zone, if: :current_user
+  around_action :user_time_zone, if: :current_user
   private
 
    def user_time_zone(&block)
@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
    redirect_to(:root,:alert => 'You need to be logged in to view this page')
   end
 
-  helper_method :current_user,:authorized?
+  helper_method :current_user, :authorized?
 
 
 

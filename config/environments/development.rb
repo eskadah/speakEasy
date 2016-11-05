@@ -23,8 +23,8 @@ SpeakingCalendar::Application.configure do
       :enable_starttls_auto =>  true,
       :port => 587,
       :authentication => :plain,
-      :user_name => 'rails.eskadah',
-      :password => 'grojeji09'
+      :user_name => ENV["EMAIL_USERNAME"],
+      :password => ENV["EMAIL_PASSWORD"]
   }
 
   # Print deprecation notices to the Rails logger.

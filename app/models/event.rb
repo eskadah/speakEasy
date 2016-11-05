@@ -1,11 +1,11 @@
-class Event < ActiveRecord::Base
+class Event < ApplicationRecord
   
 
   before_save :build_all_day_event
   after_save :send_reminder
 
 
-  validates_presence_of(:start,:end,:title)
+  validates_presence_of :start, :end, :title
 
   validate :valid_event
 
@@ -14,11 +14,10 @@ class Event < ActiveRecord::Base
   scope :future_events, ->{ where('start >= ?',Date.today) }
   scope :upcoming_events, ->(speaker_id){ future_events.where(:user_id => speaker_id).order('start asc').limit(5)}
 
-
   protected
 
   def valid_event
-    if self.end && self.start
+    if self.end && self.start && !all_day  
       errors.add(:end,'and Start times are Invalid') if self.end < self.start
     end
   end
@@ -30,17 +29,8 @@ class Event < ActiveRecord::Base
     end
   end
 
-
-  def one_day_before_event
-    self.start.at_beginning_of_day - 1.day
-  end
-
-
   def send_reminder
-      Notification.send_reminder(speaker.email,title,start,self.end).deliver
+    Notification.send_reminder(speaker.email, self.id).deliver_later(wait_until: (start.at_beginning_of_day - 1.day))
   end
-
-  handle_asynchronously :send_reminder, :run_at => Proc.new{|instance| instance.one_day_before_event}
-
 end
 

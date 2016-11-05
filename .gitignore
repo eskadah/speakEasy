@@ -15,5 +15,6 @@
 /log/*.log
 /tmp
 .DS_Store
+.env
 
 /.DS_Store

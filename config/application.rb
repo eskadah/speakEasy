@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module SpeakingCalendar
   class Application < Rails::Application
+    config.active_job.queue_adapter = :delayed_job
 
     #config.autoload_paths += [File.join(config.root,'app','pdfs','*')]
     # Settings in config/environments/* take precedence over those specified here.
