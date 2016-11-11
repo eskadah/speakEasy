@@ -10,7 +10,10 @@ module SpeakingCalendar
   class Application < Rails::Application
     config.active_job.queue_adapter = :delayed_job
 
-    #config.autoload_paths += [File.join(config.root,'app','pdfs','*')]
+    config.autoload_paths += [
+        File.join(config.root,'app','pdfs','*'),
+        File.join(config.root,'app','validators','*')
+    ]
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
