@@ -1,0 +1,26 @@
+  <div class="row">
+  <div class="col-xs-3"></div>
+  <div class="col-xs-6">
+
+  <% if oauth_errors  && oauth_errors.any? %>
+      <div class='text-center form-group bg-danger'>
+        <ul class='list-unstyled' style="padding: 20px">
+          <% oauth_errors.each do |msg| %>
+              <li class = text-danger><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
+
+   <h3> Please Complete your Registration Below</h3>
+    <%= form_tag(complete_registration_o_auth_sessions_path) do %>
+          <div class='form-group'> <label for="user_name"> Name </label> <%= text_field "user", :name, :placeholder => "Name", class: 'form-control' %> </div>
+          <div class='form-group'> <label for="user_email"> Email </label> <%= text_field "user", :email, :placeholder => "Email", class: 'form-control' %> </div>
+          <div class='form-group'> <label for="user_username"> Username </label> <%= text_field "user", :username, :placeholder => "Username", class: 'form-control' %>  </div>
+           <div class='form-group'> <label for="user_time_zone"> Time Zone </label> <%= time_zone_select "user", :time_zone, ActiveSupport::TimeZone.us_zones, { default: "Pacific Time (US & Canada)"}, { class: 'form-control' } %></div>
+           <div class='form-group'><%= hidden_field "user", :github_id %>  </div>
+          <div class='form-group'><%= submit_tag "Create Your Account", class: 'btn btn-primary' %> </div>
+      <% end %>
+      </div>
+      <div class="col-xs-3"></div>
+    </div>

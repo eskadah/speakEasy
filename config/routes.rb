@@ -1,14 +1,23 @@
 SpeakingCalendar::Application.routes.draw do
 
-  get '/' ,:to => 'users#show', :constraints => lambda {|request| request.session[:user_id]}
+  get '/' ,:to => 'users#show', :constraints => lambda { |request| request.session[:user_id] }
 
   root :to => 'users#new', via: :get
 
-  resources :users, only: [:new,:create,:show] do
+  resources :users, only: [:new, :create, :show] do
     collection do
       get 'events/new' => 'events#new'
     end
   end
+
+  resources :o_auth_sessions, only: [:create] do
+    collection do
+      post 'complete_registration', as: "complete_registration"
+      get 'register'
+    end
+
+  end
+  get "/auth/:provider/callback" => "o_auth_sessions#create"
 
   resources :sessions, only: [:new,:create]
   get 'sessions/destroy'

@@ -1,9 +1,7 @@
 $(document).ready(function() {
-
     $('#daycalendar').fullCalendar({
         header: {
             left: 'prev,next today',
-
             center: 'title',
             right: ''
         },
@@ -15,8 +13,12 @@ $(document).ready(function() {
             query = '?clicked_date='+date.format();
             window.location.assign('events/new/' + query);
         }
-
     });
 
+    $(".signup-button").on("click", function(){
+        $(this).fadeOut(150).queue(function(){
+            $(".signup-form").slideToggle(300)
+        })
+    });
 });
 

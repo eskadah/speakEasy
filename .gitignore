@@ -17,9 +17,8 @@
 .DS_Store
 .env
 .idea/*
-/.idea
 .idea
-
 /.DS_Store
-
 .idea
+/public/assets/
+/vendor/assets/.DS_Store

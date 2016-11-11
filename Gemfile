@@ -33,6 +33,8 @@ end
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'omniauth-github', github: 'intridea/omniauth-github'
+gem 'font-awesome-sass'
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -46,10 +48,14 @@ gem 'active_model_serializers', '~> 0.8.1'
 
 gem 'prawn'
 gem 'active_type'
-gem 'dotenv-rails', :groups => [:development, :test]
 
 gem 'delayed_job_active_record'
 gem 'daemons'
+
+group :development, :test do
+  gem 'dotenv-rails'
+  gem 'web-console'
+end
 
 group(:production) do
   gem 'rails_12factor'
@@ -58,4 +64,5 @@ end
 
 group(:development) do 
   gem 'whenever', :require => false
+  gem 'pry-rails'
 end

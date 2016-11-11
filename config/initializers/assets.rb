@@ -3,4 +3,5 @@ Rails.application.config.assets.precompile += %w(
   moment.min.js 
   jquery-ui.custom.min.js 
   fullcalendar.min.js
+  bootstrap-social.css
   )
