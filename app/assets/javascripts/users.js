@@ -1,9 +1,7 @@
 $(document).ready(function() {
-    
     $('#daycalendar').fullCalendar({
         header: {
             left: 'prev,next today',
-
             center: 'title',
             right: ''
         },

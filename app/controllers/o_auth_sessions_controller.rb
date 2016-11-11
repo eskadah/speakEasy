@@ -2,18 +2,18 @@ class OAuthSessionsController < ApplicationController
   before_action :verify_oauth_session, only: [:register]
 
   def create
-  	user = User.find_or_create_with_auth_hash(request.env["omniauth.auth"])
-  	if user.new_record?
-       session["oauth_user"] = user.as_json(only: [:email, :name, :github_id, :username])
-  	   redirect_to action: :register
-  	else
-  	  session[:user_id] = user.id
-  	  redirect_to user, notice: 'You have successfully logged in'
-  	end
+    user = User.find_or_create_with_auth_hash(request.env["omniauth.auth"])
+    if user.new_record?
+      session["oauth_user"] = user.as_json(only: [:email, :name, :github_id, :username])
+      redirect_to action: :register
+    else
+      session[:user_id] = user.id
+      redirect_to user, notice: 'You have successfully logged in'
+    end
   end
 
   def register
-    render locals: { user: @user, oauth_errors: session.delete(:oauth_errors) }
+    render locals: { user: @user, oauth_errors: session.delete(:oauth_errors) } 
   end
 
   def complete_registration
@@ -39,7 +39,7 @@ class OAuthSessionsController < ApplicationController
         email: oauth_user["email"],
         github_id: oauth_user["github_id"],
         username: oauth_user["username"]
-      )
+        )
     else
       not_found
     end
@@ -52,6 +52,6 @@ class OAuthSessionsController < ApplicationController
       :username, 
       :time_zone,
       :github_id
-    )
+      )
   end
 end
