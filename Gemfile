@@ -35,6 +35,7 @@ end
 gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth-github', github: 'intridea/omniauth-github'
 gem 'font-awesome-sass'
+gem 'administrate'
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -47,6 +48,7 @@ gem 'font-awesome-sass'
 gem 'active_model_serializers', '~> 0.8.1'
 
 gem 'prawn'
+gem 'prawn-table'
 gem 'active_type'
 
 gem 'delayed_job_active_record'
