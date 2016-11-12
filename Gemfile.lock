@@ -238,6 +238,7 @@ DEPENDENCIES
   administrate
   bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.1.1)
+  bourbon
   daemons
   delayed_job_active_record
   dotenv-rails

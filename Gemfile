@@ -36,6 +36,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth-github', github: 'intridea/omniauth-github'
 gem 'font-awesome-sass'
 gem 'administrate'
+gem 'bourbon'
 
 # Use unicorn as the app server
 # gem 'unicorn'
