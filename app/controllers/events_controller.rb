@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-
   before_action :authorized?
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
@@ -7,8 +6,8 @@ class EventsController < ApplicationController
     @events = current_user.events
     respond_to do |format|
       format.html
-      format.json {render json: @events, root: false }
-      format.pdf  {render_pdf @events, current_user }
+      format.json { render json: @events, root: false }
+      format.pdf  { render_pdf @events, current_user }
     end
   end
 
@@ -45,7 +44,6 @@ class EventsController < ApplicationController
     end
   end
 
-
   def edit
 
   end
@@ -72,5 +70,4 @@ class EventsController < ApplicationController
     pdf = AgendaPDF.new(events,user)
     send_data pdf.render, filename: 'Your Agenda.pdf', type: 'application/pdf'
   end
-
 end

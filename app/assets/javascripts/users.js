@@ -14,11 +14,16 @@ $(document).ready(function() {
             window.location.assign('events/new/' + query);
         }
     });
+    var $signUpButton = $(".signup-button");
 
-    $(".signup-button").on("click", function(){
+    $signUpButton.on("click", function(){
         $(this).fadeOut(150).queue(function(){
             $(".signup-form").slideToggle(300)
         })
     });
+
+    if(document.cookie.indexOf("redirect_after_error") != -1){
+        $signUpButton.click();
+    }
 });
 
