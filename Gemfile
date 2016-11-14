@@ -43,7 +43,14 @@ gem 'twilio-ruby', '~> 4.11.1'
 
 group :development, :test do
   gem 'dotenv-rails'
-  gem 'web-console'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'shoulda-matchers'
+  gem 'webmock'
+  gem 'database_cleaner'
 end
 
 group(:production) do
@@ -54,4 +61,5 @@ end
 group(:development) do 
   gem 'whenever', :require => false
   gem 'pry-rails'
+  gem 'web-console'
 end
