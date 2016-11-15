@@ -18,7 +18,7 @@ class User < ApplicationRecord
       user.save
       user
     else
-      User.build_from_auth_hash(auth_hash)
+      build_from_auth_hash(auth_hash)
     end
   end
 
