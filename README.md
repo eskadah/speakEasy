@@ -1,6 +1,7 @@
 speakEasy
 =========
 Rails ~~4~~ 5 Application that allows users to manage speaking engagements.
+
   Old heroku deployment http://speakeasy-eskadah.herokuapp.com/  (updated link coming soon)
 
 - [x] OAuth sign up and login through Github
