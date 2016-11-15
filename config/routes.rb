@@ -9,13 +9,15 @@ SpeakingCalendar::Application.routes.draw do
 
   get '/' ,:to => 'users#show', :constraints => lambda { |request| request.session[:user_id] }
 
-  root :to => 'users#new', via: :get
+  root :to => 'users#new'
 
-  resources :users, only: [:new, :create, :show, :edit, :update] do
+  resources :users, except: [:destroy, :delete, :index] do
     collection do
       get 'events/new' => 'events#new'
+      root :to => "users#new"
     end
   end
+
 
   resources :o_auth_sessions, only: [:create] do
     collection do

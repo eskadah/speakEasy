@@ -1,0 +1,34 @@
+<%= form_for user, { :html => { class: form_class} } do |f| %>
+  <% if user.errors.any? %>
+      <div class='text-center form-group bg-danger'>
+        <ul class='list-unstyled' style="padding: 20px">
+          <% user.errors.full_messages.each do |msg| %>
+              <li class = text-danger><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
+
+  <div class='form-group'><%= f.text_field :name, :placeholder => "Name", class: 'form-control' %> </div>
+  <div class='form-group'><%= f.text_field :email, :placeholder => "Email", class: 'form-control' %> </div>
+  <div class='form-group'><%= f.text_field :username, :placeholder => "Username", class: 'form-control' %>  </div>
+  <div class='form-group'><%= f.password_field :password, :placeholder => "Password", class: 'form-control' %> </div>
+  <div class='form-group'><%= f.password_field :password_confirmation, :placeholder => "Confirm Password", class: 'form-control' %></div>
+
+
+  <div class="form-group">
+    <div>
+      <label>Reminder Preferences</label>
+    </div>
+    <%= f.collection_radio_buttons(:communication_preference, User.communication_preferences, :last,  proc { |coll| communication_preferences_text(coll) })  do |b|
+        b.label(class: "radio-inline") do
+          b.radio_button(checked: f.object.communication_preference == b.object.first) + b.text 
+        end
+      end
+    %>
+  </div>
+  <div class='form-group'><%= f.telephone_field :phone_number, id: "user_phone", class: 'form-control', placeholder: "Phone Number", maxlength: 10 %> </div>
+
+  <div class='form-group'> <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones,{ default: "Pacific Time (US & Canada)" }, class: 'form-control'%></div>
+  <div class='form-group'><%= f.submit submit_text, class: 'btn btn-primary' %> </div>
+<% end %>
