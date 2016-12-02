@@ -7,7 +7,7 @@ SpeakingCalendar::Application.routes.draw do
     root to: "events#index"
   end
 
-  get '/' ,:to => 'users#show', :constraints => lambda { |request| request.session[:user_id] }
+  root :to => 'users#show', :constraints => lambda { |request| request.session[:user_id] }
 
   root :to => 'users#new'
 
